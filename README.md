@@ -1,29 +1,13 @@
 # Disable plagiarism #
+This plugin was developed thanks to funding from Xi’an Jiaotong-Liverpool University (https://www.xjtlu.edu.cn)
 
-Plugin that allows a teacher to disable the display of plagiarism links on the assignment grading page to speed up page-load time.
+When viewing large numbers of assignments on the grading page, this can impact on the page loading time. 
+This plugin adds a button at the top of the assignment grading page "Hide/Show plagiarism links" allowing the teacher to hide/show the plagiarism links.
+The decision to hide/show the links is stored as a user-preference which applies to the grading page for all assignments on the site.
 
-## Installing via uploaded ZIP file ##
+## Installing the plugin ##
 
-1. Log in to your Moodle site as an admin and go to _Site administration >
-   Plugins > Install plugins_.
-2. Upload the ZIP file with the plugin code. You should only be prompted to add
-   extra details if your plugin type is not automatically detected.
-3. Check the plugin validation report and finish the installation.
-
-## Installing manually ##
-
-The plugin can be also installed by putting the contents of this directory to
-
-    {your/moodle/dirroot}/local/disableplagiarism
-
-Afterwards, log in to your Moodle site as an admin and go to _Site administration >
-Notifications_ to complete the installation.
-
-Alternatively, you can run
-
-    $ php admin/cli/upgrade.php
-
-to complete the installation from the command line.
+Please see the instructions here for installing plugins in Moodle: https://docs.moodle.org/en/Installing_plugins#Installing_a_plugin
 
 ## License ##
 
