@@ -23,10 +23,8 @@
  */
 
 /**
- * Add resubmit button to overall grading pages.
+ * Hook to add a button to header of assignment grading page.
  *
- * @param object $course - full Course object
- * @param object $cm - full cm object
  */
 function local_disableplagiarism_before_standard_top_of_body_html() {
     global $PAGE, $OUTPUT, $CFG;
@@ -41,19 +39,20 @@ function local_disableplagiarism_before_standard_top_of_body_html() {
     }
     $url = $PAGE->url;
     $disableaction = optional_param('local_disableplagiarism',  false, PARAM_BOOL);
-    set_user_preference('local_disableplagiarism', $disableaction);
+    if (data_submitted()) { // Only check if a change to user preference needs to happen on page POST actions.
+        set_user_preference('local_disableplagiarism', $disableaction);
+    }
 
     $disableplagiarism = get_user_preferences('local_disableplagiarism', 0);
 
     if ($disableplagiarism) {
-       $buttonstring = get_string('showplagiarismlinks', 'local_disableplagiarism');
-       $CFG->enableplagiarism = 0;
-       $url->param('local_disableplagiarism', 0);
+        $buttonstring = get_string('showplagiarismlinks', 'local_disableplagiarism');
+        $CFG->enableplagiarism = 0;
+        $url->param('local_disableplagiarism', 0);
     } else {
-       $buttonstring = get_string('hideplagiarismlinks', 'local_disableplagiarism');
-       $url->param('local_disableplagiarism', 1);
+        $buttonstring = get_string('hideplagiarismlinks', 'local_disableplagiarism');
+        $url->param('local_disableplagiarism', 1);
     }
-
 
     $button = html_writer::div($OUTPUT->single_button($url, $buttonstring), 'local_disableplagiarism');
     $PAGE->set_button($PAGE->button . $button);
